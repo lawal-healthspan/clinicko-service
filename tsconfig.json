@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "target": "ESNEXT",
+      "module": "commonjs",
+      "lib": ["es2020"],
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "outDir": "./build",
+      "rootDir": "./src",
+        "paths": {
+        "@/*": ["./src/*"]
+      }
+    },
+    "include": ["src/**/*", "src/handler.ts"],
+    "exclude": ["node_modules"]
+  }

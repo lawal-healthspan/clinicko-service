@@ -1,0 +1,26 @@
+{
+  "name": "cliniko-service",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "rimraf dist && tsc --watch",
+    "dev": "serverless dev"
+  },
+  "dependencies": {
+    "express": "^4.21.1",
+    "serverless-http": "^3.2.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.146",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "esbuild": "^0.24.0",
+    "rimraf": "^6.0.1",
+    "serverless-cors-plugin": "^0.4.2",
+    "serverless-esbuild": "^1.54.6",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.2"
+  }
+}
