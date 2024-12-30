@@ -12,10 +12,10 @@ provider:
 
 functions:
   api:
-    handler: functions/check.hello
+    handler: functions/check.handler
     events:
       - http:
-          path: hello
+          path: check
           method: post
           cors: true
 

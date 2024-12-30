@@ -15,7 +15,9 @@ const clinics = () => {
         const appointment_types = await getAllAppointmentTypes(businesses);
         const practitioners = await clinicPractitioners(clinikoApiKey);
         const patients = await clinicPatients(clinikoApiKey);
-        return { patients, locations, appointment_types, practitioners };
+        const address = refineBusinessInformation(businesses);
+        console.log(address);
+        return { patients, locations, appointment_types, practitioners, address };
     };
     const clinicPatients = async (clinikoApiKey) => {
         const requestData = {
@@ -40,6 +42,16 @@ const clinics = () => {
         const appointmentTypesArray = businesses.map((business) => business.appointment_type_ids.length);
         const appointmentTypes = Math.max(...appointmentTypesArray.flat());
         return appointmentTypes;
+    };
+    const refineBusinessInformation = (businesses) => {
+        const { address_1, city, country_code, post_code, state, } = businesses[0];
+        return {
+            line1: address_1,
+            city,
+            state,
+            postal_code: post_code,
+            country: country_code,
+        };
     };
     return {
         businesses

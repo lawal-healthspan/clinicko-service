@@ -9,10 +9,11 @@ const eventBodySchema = z.object({
     .min(16, { message: "API key must be at least 76 characters" }),
 });
 
-export const hello: APIGatewayProxyHandler = async (event, _context) => {
-  try {
-    const clinic = clinics();
-    const requestBody = JSON.parse(event.body || "{}");
+
+export const handler:APIGatewayProxyHandler = async (event, _context) => {
+  try{
+    const clinic = clinics()
+    const requestBody = JSON.parse(event.body || "{}")
     const validatedData = eventBodySchema.parse(requestBody);
     const { apiKey } = validatedData;
 
@@ -54,6 +55,7 @@ export const hello: APIGatewayProxyHandler = async (event, _context) => {
   }
 };
 
-export default hello;
+
+export default handler;
 
 // cloned the serverless

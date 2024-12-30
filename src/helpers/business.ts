@@ -19,12 +19,13 @@ const clinics = () => {
         // appointment types
         const appointment_types = await getAllAppointmentTypes(businesses);
 
-
         const practitioners = await clinicPractitioners(clinikoApiKey);
 
         const patients = await clinicPatients(clinikoApiKey);
+        const address = refineBusinessInformation(businesses);
+        console.log(address)
 
-        return {patients,locations, appointment_types,practitioners}
+        return {patients,locations, appointment_types,practitioners,address}
     };
 
     const clinicPatients = async (clinikoApiKey:string) => {
@@ -60,9 +61,27 @@ const clinics = () => {
         return appointmentTypes; 
     };
 
+    const refineBusinessInformation = (businesses: BusinessType[]) => {
+      const {
+        address_1,
+        city,
+        country_code,
+        post_code,
+        state,
+      } =  businesses[0]
+
+       return {
+          line1:address_1,
+          city,
+          state,
+          postal_code:post_code,
+          country:country_code,
+        }
+    }
+
     return {
       businesses
-    };
+    }; 
 };
 
 export default clinics;
